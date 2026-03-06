@@ -29,6 +29,13 @@ def test_capitalize_negative():
 def test_trim_positive(input, expected):
     assert Utils.trim(input) == expected
 
+@pytest.mark.parametrize("input, expected",[
+    ("", ""),
+    ("         ", "")
+    ])
+
+def test_trim_negative(input, expected):
+    assert Utils.trim(input) == expected
 #-----------------contains------------------
 
 @pytest.mark.parametrize("input1, input2, expected",[
@@ -39,6 +46,15 @@ def test_trim_positive(input, expected):
     ("ABC", "2", False)
 ])
 def test_contains_positive(input1, input2, expected):
+    assert Utils.contains(input1, input2) == expected
+
+@pytest.mark.parametrize("input1, input2, expected",[
+    ("ABC", "1", True),
+    ("ABC", "B", False),
+    ("ABC", "", True)
+    (" ", " ", True)
+])
+def test_contains_negative(input1, input2, expected):
     assert Utils.contains(input1, input2) == expected
 
 #---------------delete_symbol------------------
